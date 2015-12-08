@@ -1,0 +1,20 @@
+# PocketPlus by xFlare.
+
+# Weather settings
+enable-rain: true
+enable-snow: true
+enble-sun: true
+
+# Gloable weather or static? Static weather depends on biome, gloable make it so it does not.
+gloable-weather: true
+
+# --- Danger Zone! ---
+
+# Change tick rate?
+tick-rate: 20
+
+# Experimental, change the speed of when weather changes.
+weather-rand: 800
+
+# For internal use. Do NOT EDIT.
+version: 1.0.0
