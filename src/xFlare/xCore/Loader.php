@@ -1,5 +1,12 @@
 <?php
-//TODO: Logo
+/*
+ _____           _        _   _____  _           
+|  __ \         | |      | | |  __ \| |          
+| |__) |__   ___| | _____| |_| |__) | |_   _ ___ 
+|  ___/ _ \ / __| |/ / _ \ __|  ___/| | | | / __|
+| |  | (_) | (__|   <  __/ |_| |    | | |_| \__ \
+|_|   \___/ \___|_|\_\___|\__|_|    |_|\__,_|___/
+*/
 
 /*
 - Loads every thing up and checks for config errors.
@@ -10,11 +17,7 @@ use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\Server;
-/*
-- Loads up xAuth files.
-- xAuth is user-friendly and checks for errors.
-- Functions in this class MUST only be called once.
-*/
+
 class Loader extends PluginBase implements Listener{
   
   public $weatherlog = [];
