@@ -21,6 +21,8 @@ use pocketmine\Server;
 class Loader extends PluginBase implements Listener{
   
   public $weatherlog = [];
+  public $playerhunger = [];
+  public $playerenchantment = [];
   
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -36,14 +38,15 @@ class Loader extends PluginBase implements Listener{
     if($this->checkForConfigErrors() && $this->status === null){
       $this->status = "enabled";
       $this->getServer()->getPluginManager()->registerEvents(new CommandManager($this), $this);
-      $this->getServer()->getPluginManager()->registerEvents(new API($this), $this);
       $this->getServer()->getPluginManager()->registerEvents(new WeatherManager($this), $this);
       $this->getServer()->getPluginManager()->registerEvents(new WeatherChannel($this), $this);
-      //TODO: Ticks
+      $this->getServer()->getScheduler()->scheduleRepeatingTask(new TickManager($this), $this->getConfig()->get("tick-rate"));
+      if($this->getConfig()->get("enable-api")){
+        $this->getServer()->getPluginManager()->registerEvents(new API($this), $this);
+      }
+      return;
     }
-    else{
-      $this->status = "false";
-    }
+    $this->status = "failed";
   }
   
   public function checkForConfigErrors(){
