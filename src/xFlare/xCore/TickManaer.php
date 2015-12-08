@@ -30,6 +30,7 @@ class TickManager extends PluginTask{
       if($this->weatherticks > 620){
         $enable = mt_rand(1, 2);
         $this->executeWeather($enable);
+        $this->weatherticks = 0;
       }
     }
     
