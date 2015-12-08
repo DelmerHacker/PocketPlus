@@ -17,7 +17,7 @@ namespace xFlare\xCore;
 use pocketmine\Server;
 use pocketmine\scheduler\PluginTask;
 /*
-- Manages xAuth ticks. Many things are controlled here, but it's all optional!
+- Manages ticks. Many things are controlled here, but it's all optional!
 */
 
 class TickManager extends PluginTask{
