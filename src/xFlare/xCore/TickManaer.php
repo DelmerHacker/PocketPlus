@@ -26,5 +26,19 @@ class TickManager extends PluginTask{
         $this->plugin = $plugin;
     }
     public function onRun($currentTick){
+      $this->weatherticks++:
+      if($this->weatherticks > 620){
+        $enable = mt_rand(1, 2);
+        $this->executeWeather($enable);
+      }
+    }
+    
+    public function executeWeather($enable){
+      if($enable === 2){
+       return;
+      }
+      foreach($this->getPlayers()->getOnlinePlayers() as $p){
+       //Send weather packet, need to add config converter first.
+      }
     }
  }
