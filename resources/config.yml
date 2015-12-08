@@ -12,9 +12,6 @@ enble-sun: true
 
 # Gloable weather or static? Static weather depends on biome, gloable make it so it does not.
 gloable-weather: true
-
-# Enable debug mode?
-debug-mode: true
 #---
 
 #--- Food settings ---#
@@ -25,6 +22,8 @@ enable-food: true
 enable-enchantment: true
 #---
 
+# Debug? Extra logger messages.
+enable-debug: false
 
 # --- Danger Zone! ---
 # These settings should not be changed.
