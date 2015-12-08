@@ -1,5 +1,7 @@
 # PocketPlus by xFlare.
 
+
+#--- Weather Settings ---#
 # Weather settings
 enable weather: true
 
@@ -13,8 +15,19 @@ gloable-weather: true
 
 # Enable debug mode?
 debug-mode: true
+#---
+
+#--- Food settings ---#
+enable-food: true
+#--
+
+#--- Enchantment settings ---#
+enable-enchantment: true
+#---
+
 
 # --- Danger Zone! ---
+# These settings should not be changed.
 
 # Change tick rate?
 tick-rate: 20
