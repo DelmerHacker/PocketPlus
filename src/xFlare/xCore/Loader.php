@@ -30,6 +30,8 @@ class Loader extends PluginBase implements Listener{
     $this->getServer()->getLogger()->info("§dPocketPlus §3by §axFlare §3is enabled§7!");
     $this->saveDefaultConfig();
     $this->status = null; //Plugin starting up...
+    $this->weather = "sun";
+    $this->weatherticks = 0;
     $this->debug = $this->getConfig()->get("debug-mode");
     $this->startPlugin();
   }
