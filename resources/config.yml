@@ -11,6 +11,7 @@ enable-snow: true
 enble-sun: true
 
 # Gloable weather or static? Static weather depends on biome, gloable make it so it does not.
+# Enableing this will cause your worlds biomes to change!
 gloable-weather: true
 #---
 
