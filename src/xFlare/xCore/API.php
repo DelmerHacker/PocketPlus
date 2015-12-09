@@ -8,13 +8,12 @@
 |_|   \___/ \___|_|\_\___|\__|_|    |_|\__,_|___/
 */
 
+namespace xFlare\PocketPlus;
 /*
 - This class creates aa handy-dandy API to allow plugins to control these new features.
 - Each function only returns true or false.
 - This class is optional and only gets registered if enabled.
 */
-namespace xFlare\PocketPlus;
-
 use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -25,7 +24,10 @@ class API implements Listener{
 	   public function __construct(Loader $plugin){
         $this->plugin = $plugin;
     }
-    public function isWeatherToggle(){
+    public function isRaining(){
         return $this->plugin->weather;
+    }
+    public function isWeatherEnabled(){
+    	return $this->plugin->weatherEnabled;
     }
 }
