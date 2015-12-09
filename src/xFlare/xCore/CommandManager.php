@@ -1,4 +1,4 @@
-
+<?
 /*
  _____           _        _   _____  _           
 |  __ \         | |      | | |  __ \| |          
@@ -12,3 +12,18 @@
 - Command manager manages commands.
 - The API here is private and cannot be used.
 */
+namespace xFlare\xAuth;
+use pocketmine\Player;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\Server;
+
+class CommandManager extends Command{
+	public function __construct(Loader $plugin){
+        	$this->plugin = $plugin;
+  	}
+  	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+  	}
+}
