@@ -8,19 +8,21 @@
 |_|   \___/ \___|_|\_\___|\__|_|    |_|\__,_|___/
 */
 
-/*
-- Loads every thing up and checks for config errors.
-*/
 namespace xFlare\xAuth;
+
 use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\Server;
-
+use pocketmine\network\protocol\LevelEventPacket;
+use pocketmine\network\protocol\AddEntityPacket;
+/*
+- Loads every thing up & starts the plugin.
+*/
 class Loader extends PluginBase implements Listener{
   
-  public $weatherlog = [];
+ // public $weatherlog = []; Don't know if I will use this.
   public $playerhunger = [];
   public $playerenchantment = [];
   
