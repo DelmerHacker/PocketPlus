@@ -8,18 +8,16 @@
 |_|   \___/ \___|_|\_\___|\__|_|    |_|\__,_|___/
 */
 
-/*
-- Manages ticks and some data dumping.
-- Very important class for hunger and weather.
-*/
 namespace xFlare\xCore;
 
 use pocketmine\Server;
 use pocketmine\scheduler\PluginTask;
+use pocketmine\network\protocol\LevelEventPacket;
+use pocketmine\network\protocol\AddEntityPacket;
 /*
-- Manages ticks. Many things are controlled here, but it's all optional!
+- Manages ticks and some data dumping.
+- Very important class for hunger and weather.
 */
-
 class TickManager extends PluginTask{
     public function __construct(Loader $plugin){
         parent::__construct($plugin);
@@ -40,7 +38,10 @@ class TickManager extends PluginTask{
        return;
       }
       foreach($this->getPlayers()->getOnlinePlayers() as $p){
-       //Send weather packet, need to add config converter first.
+       $pk = new LevelEventPacket();
+	      $pk->evid = 3001;
+	      $pk->data = 10000;
+	      $p->dataPacket($pk);
       }
     }
  }
