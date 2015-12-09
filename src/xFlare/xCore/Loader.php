@@ -30,12 +30,23 @@ class Loader extends PluginBase implements Listener{
     $this->getServer()->getLogger()->info("§dPocketPlus §3by §axFlare §3is enabled§7!");
     $this->saveDefaultConfig();
     $this->status = null; //Plugin starting up...
-    $this->weather = "sun";
+    $this->weather = true;
     $this->weatherticks = 0;
     $this->debug = $this->getConfig()->get("debug-mode");
     $this->startPlugin();
+    $this->startWeather(mt_rand(1, 4));
   }
-  
+  public function startWeather($rand){
+   if($rand === 2){
+     $this->weather = true;
+     foreach($this->getServer()->getOnlinePlayers() as $p){
+      $pk = new LevelEventPacket();
+		    $pk->evid = 3001;
+		    $pk->data = 10000;
+		    $p->dataPacket($pk);
+     }
+   }
+  }
   public function startPlugin(){
     if($this->checkForConfigErrors() && $this->status === null){
       $this->status = "enabled";
