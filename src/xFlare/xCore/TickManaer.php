@@ -26,6 +26,7 @@ class TickManager extends PluginTask{
         $this->plugin = $plugin;
     }
     public function onRun($currentTick){
+     # Actual weather toggle.
       $this->weatherticks++:
       if($this->weatherticks > 620){
         $enable = mt_rand(1, 2);
