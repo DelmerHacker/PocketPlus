@@ -36,22 +36,26 @@ class Loader extends PluginBase implements Listener{
     $this->weatherticks = 0;
     $this->debug = $this->getConfig()->get("debug-mode");
     $this->startPlugin();
-    $this->startWeather(mt_rand(1, 4));
+    $this->weatherEnabled = $this->getCondfig()->get("enable-weather");
+    if($this->weatherEnabled){
+    	$this->startWeather(mt_rand(1, 4));
+    }
   }
   public function startWeather($rand){
    if($rand === 2){
      $this->weather = true;
      foreach($this->getServer()->getOnlinePlayers() as $p){
       $pk = new LevelEventPacket();
-		    $pk->evid = 3001;
-		    $pk->data = 10000;
-		    $p->dataPacket($pk);
+      $pk->evid = 3001;
+      $pk->data = 10000;
+      $p->dataPacket($pk);
      }
    }
   }
   public function startPlugin(){
     if($this->checkForConfigErrors() && $this->status === null){
       $this->status = "enabled";
+      $this->debug = $this->getConfig()-get("debug-mode");
       $this->getServer()->getPluginManager()->registerEvents(new CommandManager($this), $this);
       $this->getServer()->getPluginManager()->registerEvents(new WeatherManager($this), $this);
       $this->getServer()->getPluginManager()->registerEvents(new WeatherChannel($this), $this);
