@@ -1,0 +1,7 @@
+name: PocketPlus
+author: xFlare
+main: xFlare\xCore\Loader
+version: "1.0.0"
+api: [1.9.0]
+description: Adds weather, enchanting and hunger!
+   
