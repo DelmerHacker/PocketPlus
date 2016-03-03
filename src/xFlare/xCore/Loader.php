@@ -21,8 +21,7 @@ use pocketmine\network\protocol\AddEntityPacket;
 - Loads every thing up & starts the plugin.
 */
 class Loader extends PluginBase implements Listener{
-  
- // public $weatherlog = []; Don't know if I will use this.
+ 
   public $playerhunger = [];
   public $playerenchantment = [];
   
@@ -32,41 +31,19 @@ class Loader extends PluginBase implements Listener{
     $this->getServer()->getLogger()->info("§dPocketPlus §3by §axFlare §3is enabled§7!");
     $this->saveDefaultConfig();
     $this->status = null; //Plugin starting up...
-    $this->weather = true;
+    $this->weather = null;
     $this->weatherticks = 0;
     $this->debug = $this->getConfig()->get("debug-mode");
     $this->startPlugin();
     $this->weatherEnabled = $this->getCondfig()->get("enable-weather");
-    if($this->weatherEnabled){
-    	$this->startWeather(mt_rand(1, 4));
-    }
-  }
-  public function startWeather($rand){
-   if($rand === 2){
-     $this->weather = true;
-     foreach($this->getServer()->getOnlinePlayers() as $p){
-      $pk = new LevelEventPacket();
-      $pk->evid = 3001;
-      $pk->data = 10000;
-      $p->dataPacket($pk);
-     }
-   }
   }
   public function startPlugin(){
-    if($this->checkForConfigErrors() && $this->status === null){
-      $this->status = "enabled";
-      $this->debug = $this->getConfig()-get("debug-mode");
-      $this->getServer()->getPluginManager()->registerEvents(new CommandManager($this), $this);
-      $this->getServer()->getPluginManager()->registerEvents(new WeatherManager($this), $this);
-      $this->getServer()->getPluginManager()->registerEvents(new WeatherChannel($this), $this);
-      $this->getServer()->getScheduler()->scheduleRepeatingTask(new TickManager($this), $this->getConfig()->get("tick-rate"));
-      if($this->getConfig()->get("enable-api")){
-        $this->getServer()->getPluginManager()->registerEvents(new API($this), $this);
-      }
-      return;
-    }
-    $this->status = "failed";
+  	$this->ticks = 0;
+  	if($this->weatherEnabled()){
+  		$this->weather = mt_rand(0, 2);
+  	}
   }
+
   
   public function checkForConfigErrors(){
     return true;
